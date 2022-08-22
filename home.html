@@ -1,0 +1,208 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customer Check-in Prediction</title>    
+        <link rel="stylesheet" href="static\css\style.css">
+    </head>
+    
+    <body background="6.jpg">
+        <div class="container">
+            <a2>Please fill the parameters below and click proceed to predict the check-in probability</a2>
+    
+    <div class="bg"></div>
+    <p align="center" class="heading"><b>Hotel Customer Check-in</b></p>
+    <form action="\predict" method="POST">
+    <div align="center">
+    
+
+    <p align="center" class="heading"><b>Customer Demographic Information:</b></p>
+    
+    <div class="b"><b>Nationality</b><br>
+        <select name="nationality" id="selectNationality">
+            <option>--Please select from below options</option>
+        </select>
+        <br>
+        <script>
+            var select = document.getElementById("selectNationality");
+            var options = ['PRT', 'DEU', 'FRA', 'JPN', 'IRL', 'ESP', 'BEL', 'NLD', 'AUT',
+           'ITA', 'CHN', 'RUS', 'POL', 'USA', 'HUN', 'CRI', 'MEX', 'CHE',
+           'ROU', 'GBR', 'BIH', 'BRA', 'FIN', 'AGO', 'CAN', 'ZAF', 'TWN',
+           'GRC', 'AUS', 'ISR', 'BGR', 'SAU', 'SWE', 'CYP', 'ARG', 'ARM',
+           'CHL', 'MAR', 'MOZ', 'KOR', 'TUN', 'DNK', 'NOR', 'MYS', 'EGY',
+           'IND', 'HRV', 'CPV', 'JOR', 'COD', 'DZA', 'LUX', 'TUR', 'IRN',
+           'LBY', 'PAN', 'COL', 'VEN', 'GNB', 'CZE', 'AND', 'SVN', 'PER',
+           'ATF', 'UGA', 'AZE', 'NZL', 'LTU', 'SRB', 'EST', 'KAZ', 'KWT',
+           'IDN', 'UKR', 'SVK', 'MLI', 'ARE', 'BGD', 'THA', 'TZA', 'LVA',
+           'PHL', 'BHR', 'NAM', 'BOL', 'SGP', 'CMR', 'MLT', 'URY', 'PAK',
+           'JAM', 'ECU', 'SYC', 'QAT', 'PRY', 'BRB', 'OMN', 'TMP', 'ABW',
+           'LBN', 'AIA', 'SLV', 'DMA', 'CUB', 'VNM', 'GEO', 'IRQ', 'GAB',
+           'PYF', 'LIE', 'SEN', 'BLR', 'ISL', 'DOM', 'GUY', 'LCA', 'ATA',
+           'NGA', 'RWA', 'CIV', 'ALB', 'MKD', 'MNE', 'GTM', 'GHA', 'MDV',
+           'MCO', 'MUS', 'SYR', 'TGO', 'LKA', 'SUR', 'KEN', 'MRT', 'HKG',
+           'CAF', 'NCL', 'STP', 'UZB', 'KIR', 'SDN', 'PRI', 'KNA', 'TJK',
+           'SLE', 'LAO', 'COM', 'ETH', 'FRO', 'BEN', 'ZWE', 'ASM', 'BWA',
+           'ERI', 'SPM', 'JEY', 'GNQ', 'MDG', 'GIN', 'NIC', 'SWZ', 'CYM',
+           'SOM', 'ATG', 'KGZ', 'FLK', 'GIB', 'BHS', 'SMR', 'UMI', 'HTI',
+           'TKM', 'PNG', 'MMR', 'WLF', 'WSM', 'IOT', 'VIR', 'NRU', 'MWI',
+           'VCT', 'GUF', 'PCN', 'FJI', 'TON', 'TCD', 'YEM', 'NPL'];
+    
+            for(var i = 0; i < options.length; i++) {
+                var opt = options[i];
+                var el = document.createElement("option");
+                el.textContent = opt;
+                el.value = opt;
+                select.appendChild(el);
+            }
+        </script>
+    </div>        
+    
+    <div class="b"><b>Age</b><br>
+        <input class="a" type="number" name ="age" required="required"></div>
+    <br>
+
+
+    <p align="center" class="heading"><b>Customer Booking Details:</b></p>
+
+    <div class="b"><b>Days Since Creation</b><br>
+        <input class="a" type="number" name ="days since creation" required="required"></div>
+    <br>
+
+    <div class="b"><b>Bookings Canceled</b><br>
+        <input class="a" type="number" name ="bookings canceled" required="required"></div>
+    <br>
+
+    <div class="b"><b>Bookings No Showed</b><br>
+        <input class="a" type="number" name ="bookings no showed" required="required"></div>
+    <br>
+
+    <div class="b"><b>Distribution Channel</b><br>
+    <select name="distribution" class="a">
+    <option value=> ---Please select from below options--- </option>
+    <option value= 'Corporate' > Corporate </option>
+    <option value= 'Travel Agent/Operator' > Travel Agent </option>
+    <option value= 'Direct' > Direct </option>
+    <option value= 'Electronic Distribution' > Electronic Distribution </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Market Segment</b><br>
+    <select name="market seg" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'Corporate' > Corporate </option>
+    <option value= 'Travel Agent/Operator' > Travel Agent </option>
+    <option value= 'Direct' > Direct </option>
+    <option value= 'Other' > Other </option>
+    <option value= 'Complementary' > Complimentary </option>
+    <option value= 'Groups' > Groups </option>
+    <option value= 'Aviation' > Aviation </option>
+    </select>
+    <br>
+
+
+    <p align="center" class="heading"><b>Customer Special Requests:</b></p>
+
+    <div class="b"><b>High Floor</b><br>
+    <select name="high floor" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Low Floor</b><br>
+    <select name="low floor" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Medium Floor</b><br>
+    <select name="medium floor" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Accessible Room</b><br>
+    <select name="accessible room" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Bathtub</b><br>
+    <select name="bathtub" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+    
+    <div class="b"><b>Shower</b><br>
+    <select name="shower" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+    
+    <div class="b"><b>Crib</b><br>
+    <select name="crib" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+    
+    <div class="b"><b>King Size Bed</b><br>
+    <select name="kingsize bed" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>   
+
+    <div class="b"><b>Twin Bed</b><br>
+    <select name="twin bed" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Distance from Elevator</b><br>
+    <select name="elevator distance" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'none' > None </option>
+    <option value= 'near' > Near </option>
+    <option value= 'away' > Away </option>
+    </select>
+    <br>
+
+    <div class="b"><b>No Alcohol in Mini Bar</b><br>
+    <select name="no alcohol" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <div class="b"><b>Quiet Room</b><br>
+    <select name="quiet room" class="a">
+    <option value= > ---Please select from below options--- </option>
+    <option value= 'yes' > Yes </option>
+    <option value= 'no' > No </option>
+    </select>
+    <br>
+
+    <br><br><button id="sub" type="submit ">Predict</button>
+    </form>
+    <h3>{{ prediction }}<h3>
+    <br>
+    </div>
+    </body>
+    </html>   
